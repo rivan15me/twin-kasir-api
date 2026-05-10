@@ -15,7 +15,7 @@ return new class extends Migration
         $table->string('id')->primary();
         $table->string('name');
         $table->string('icon_emoji')->default('📁');
-        $table->text('description')->default('');
+        $table->text('description')->nullable();
         $table->integer('sort_order')->default(0);
         $table->timestamps();
     });
