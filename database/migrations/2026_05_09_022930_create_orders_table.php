@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('payment_type')->default('lunas');
             $table->string('payment_status')->default('lunas');
             $table->string('due_date')->nullable();
-            $table->text('notes')->default('');
+            $table->text('notes')->nullable(),
             $table->string('payment_method');
             $table->string('payment_reference')->default('');
             $table->string('payment_id')->default('');
