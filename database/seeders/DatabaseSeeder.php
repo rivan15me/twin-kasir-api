@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class KasirSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
@@ -55,6 +55,7 @@ class KasirSeeder extends Seeder
             ['id' => 'm4', 'name' => 'Twice Photobooth',         'icon_emoji' => '🖼️', 'description' => 'Sewa photobooth & props',           'sort_order' => 4],
             ['id' => 'm5', 'name' => 'Twin Decoration',          'icon_emoji' => '🎊', 'description' => 'Dekorasi event & wedding',           'sort_order' => 5],
             ['id' => 'm6', 'name' => 'Twin Wedding Organizer',   'icon_emoji' => '💍', 'description' => 'Paket pernikahan lengkap',            'sort_order' => 6],
+            ['id' => 'm7', 'name' => 'Diny Salon',                   'icon_emoji' => '💅', 'description' => 'Perawatan kecantikan & salon',        'sort_order' => 7],
         ];
 
         foreach ($categories as $c) {
@@ -97,6 +98,18 @@ class KasirSeeder extends Seeder
             ['id'=>'p22', 'menu_id'=>'m6', 'name'=>'Paket WO Silver',                    'description'=>'Paket dasar',                       'price'=>8000000, 'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>0, 'emoji'=>'💍',       'image_path'=>'', 'is_active'=>1],
             ['id'=>'p23', 'menu_id'=>'m6', 'name'=>'Paket WO Gold',                      'description'=>'Paket lengkap',                     'price'=>15000000,'discount_pct'=>5,  'operational_cost'=>0, 'is_best_seller'=>1, 'emoji'=>'👑',       'image_path'=>'', 'is_active'=>1],
             ['id'=>'p24', 'menu_id'=>'m6', 'name'=>'Paket WO Platinum',                  'description'=>'All-in',                            'price'=>25000000,'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>0, 'emoji'=>'💎',       'image_path'=>'', 'is_active'=>1],
+
+            // m7 — Diny Salon
+            ['id'=>'p25', 'menu_id'=>'m7', 'name'=>'Creambath',                         'description'=>'Perawatan rambut creambath',        'price'=>85000,   'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>1, 'emoji'=>'💆', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p26', 'menu_id'=>'m7', 'name'=>'Smoothing',                          'description'=>'Pelurusan rambut smoothing',        'price'=>350000,  'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>1, 'emoji'=>'✨', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p27', 'menu_id'=>'m7', 'name'=>'Keriting Rambut',                    'description'=>'Keriting rambut permanen',          'price'=>300000,  'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>0, 'emoji'=>'🌀', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p28', 'menu_id'=>'m7', 'name'=>'Coloring Rambut',                    'description'=>'Cat rambut full / highlight',       'price'=>400000,  'discount_pct'=>10, 'operational_cost'=>0, 'is_best_seller'=>0, 'emoji'=>'🎨', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p29', 'menu_id'=>'m7', 'name'=>'Facial Dasar',                       'description'=>'Facial wajah basic',                'price'=>120000,  'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>1, 'emoji'=>'🧖', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p30', 'menu_id'=>'m7', 'name'=>'Facial Premium',                     'description'=>'Facial wajah premium + masker',     'price'=>250000,  'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>0, 'emoji'=>'✨', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p31', 'menu_id'=>'m7', 'name'=>'Manicure & Pedicure',                'description'=>'Perawatan kuku tangan & kaki',      'price'=>150000,  'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>0, 'emoji'=>'💅', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p32', 'menu_id'=>'m7', 'name'=>'Make-Up Wisuda',                     'description'=>'Rias wisuda full make-up',          'price'=>300000,  'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>1, 'emoji'=>'👩‍🎓', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p33', 'menu_id'=>'m7', 'name'=>'Make-Up Pengantin',                  'description'=>'Rias pengantin adat & modern',      'price'=>1500000, 'discount_pct'=>5,  'operational_cost'=>0, 'is_best_seller'=>1, 'emoji'=>'👰', 'image_path'=>'', 'is_active'=>1],
+            ['id'=>'p34', 'menu_id'=>'m7', 'name'=>'Potong Rambut',                      'description'=>'Potong rambut wanita',              'price'=>60000,   'discount_pct'=>0,  'operational_cost'=>0, 'is_best_seller'=>0, 'emoji'=>'✂️', 'image_path'=>'', 'is_active'=>1],
         ];
 
         foreach ($products as $p) {

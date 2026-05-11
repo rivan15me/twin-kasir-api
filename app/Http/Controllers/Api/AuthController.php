@@ -39,17 +39,19 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username'  => 'required|string|unique:users',
+            'username'  => 'required|string|min:3|unique:users',
             'password'  => 'required|string|min:8',
             'full_name' => 'required|string',
             'role'      => 'in:admin,superAdmin',
         ]);
 
+        // BUG FIX: password harus di-hash manual karena $casts 'hashed'
+        // kadang tidak aktif di versi Laravel tertentu saat create()
         $user = User::create([
             'name'       => $request->full_name,
             'username'   => $request->username,
             'email'      => $request->username . '@local.twin',
-            'password'   => $request->password,
+            'password'   => Hash::make($request->password),
             'full_name'  => $request->full_name,
             'role'       => $request->role ?? 'admin',
             'photo_path' => '',
@@ -75,9 +77,6 @@ class AuthController extends Controller
         return response()->json(['message' => 'Logged out']);
     }
 
-    // ── Ganti Password (user sendiri, butuh password lama) ───────────────────
-    // POST /api/auth/change-password
-    // Body: { old_password, new_password }
     public function changePassword(Request $request)
     {
         $request->validate([
@@ -92,11 +91,7 @@ class AuthController extends Controller
         }
 
         $user->update(['password' => Hash::make($request->new_password)]);
-
-        // Hapus semua token lama agar user harus login ulang di device lain
         $user->tokens()->delete();
-
-        // Buat token baru untuk sesi ini supaya tidak langsung logout
         $newToken = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -105,9 +100,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // ── Reset Password oleh SuperAdmin ────────────────────────────────────────
-    // POST /api/auth/reset-password/{userId}
-    // Body: { new_password }   — hanya bisa dipanggil superAdmin
     public function resetPassword(Request $request, $userId)
     {
         $caller = $request->user();
@@ -123,8 +115,6 @@ class AuthController extends Controller
         }
 
         $target->update(['password' => Hash::make($request->new_password)]);
-
-        // Hapus semua token target agar harus login ulang dengan password baru
         $target->tokens()->delete();
 
         return response()->json(['message' => 'Kata sandi berhasil direset.']);
